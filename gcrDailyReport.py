@@ -46,7 +46,7 @@ def milestoneCal(quest, skillbg,game, tindex):
         rquest = quest
     if (int(df["Skill Badge Count"][tindex]) >= skillbg):
         rskillbg = skillbg
-    if (int(df["Game Count"][tindex]) >= rgame):
+    if (int(df["Game Count"][tindex]) >= game):
         rgame = game
     per = int(((rquest + rskillbg+rgame) / (quest+skillbg+game)) * 100)
     return rquest, rskillbg, per,rgame
