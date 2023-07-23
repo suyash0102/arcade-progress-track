@@ -172,9 +172,9 @@ if (sidebarContent == "Progress Report"):
             st.markdown('<b class="big-font">Milestone Status</b>',
                         unsafe_allow_html=True)
 
-            quest, skillbg,game, per = milestoneCal(2,30, 4, tindex)
+            quest, skillbg,game, per = milestoneCal(1,9, 2, tindex)
             st.subheader("You have completed " + str(quest) +
-                         " Quests and " + str(skillbg) + " Skill Badges.")
+                         " Trivia Quests and " + str(skillbg) + " Skill Badges" + str(game) + " Game Badge.")
             if(quest >= 1 and skillbg >= 9 and game>=2):
                 st.balloons()
 
@@ -279,14 +279,15 @@ elif (sidebarContent == "Milestone Leaderboard"):
         for i in range(len(df)):
             quests = df["Trivia Quest Count"][i]
             badges = df["Skill Badge Count"][i]
+            game = df["Game Count"][i]
             level = 0
-            if (quests >= 10 and badges >= 5):
+            if (quests >= 1 and badges >= 9 and game>=2):
                 level = 1
-            if (quests >= 20 and badges >= 10):
+            if (quests >= 1 and badges >= 15 and game>=2):
                 level = 2
-            if (quests >= 30 and badges >= 15):
+            if (quests >= 2 and badges >= 21 and game>=4):
                 level = 3
-            if (quests >= 40 and badges >= 20):
+            if (quests >= 2 and badges >= 30 and game>=4):
                 level = 4
             df["level"][i] = level
 
