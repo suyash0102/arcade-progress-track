@@ -135,7 +135,7 @@ def prizeWinners(limit):
 
 if (sidebarContent == "Progress Report"):
     with(header):
-        st.image('images/banner.jpeg', use_column_width=True)
+        st.image('images/banner.jpg', use_column_width=True)
         st.markdown(
             "<h1 style='text-align: center'><b>Daily Progress Report 🌩 <br> BITW</b></h1>", unsafe_allow_html=True)
         st.write("Last Updated On: " + date + "-2022")
@@ -222,7 +222,7 @@ if (sidebarContent == "Progress Report"):
 # Milestone Leaderboard Page
 elif (sidebarContent == "Milestone Leaderboard"):
     with(header):
-        st.image('images/banner.jpeg', use_column_width=True)
+        st.image('images/banner.jpg', use_column_width=True)
         st.markdown(
             "<h1><b>Milestone Leaderboard 🏃‍♂️<br> BITW</b></h1>", unsafe_allow_html=True)
         st.write("Last Updated On: " + date + "-2022")
@@ -342,7 +342,7 @@ elif (sidebarContent == "Milestone Leaderboard"):
 
 elif (sidebarContent == "Generate Badge"):
     with(header):
-        st.image('images/banner.jpeg', use_column_width=True)
+        st.image('images/banner.jpg', use_column_width=True)
         st.markdown(
             "<h2 style='text-align: center'><b>🔖 Generate Google Cloud Arcade Badge</b></h2>", unsafe_allow_html=True)
         st.write("#####")
@@ -408,7 +408,7 @@ elif (sidebarContent == "Generate Badge"):
 
 else:
     with(header):
-        st.image('images/banner.jpeg', use_column_width=True)
+        st.image('images/banner.jpg', use_column_width=True)
         st.markdown(
             "<h2><b>Google Cloud Arcade Facilitator Program Resources</b></h2>", unsafe_allow_html=True)
         st.markdown("<hr>", unsafe_allow_html=True)
