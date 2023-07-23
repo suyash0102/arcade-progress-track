@@ -174,7 +174,7 @@ if (sidebarContent == "Progress Report"):
 
             quest, skillbg,game, per = milestoneCal(1,9, 2, tindex)
             st.subheader("You have completed " + str(quest) +
-                         " Trivia Badge and " + str(skillbg) + " Skill Badges" + str(game) + " Game Badge.")
+                         " Trivia Badge and " + str(skillbg) + " Skill Badges " + str(game) + " Game Badge.")
             if(quest >= 1 and skillbg >= 9 and game>=2):
                 st.balloons()
 
@@ -191,7 +191,7 @@ if (sidebarContent == "Progress Report"):
 
             # Milestone2
             quest, skillbg,game, per = milestoneCal(1,15, 2, tindex)
-            st.subheader("Milestone 2:    " + str(per) + "% Completed\n Quests: " +
+            st.subheader("Milestone 2:    " + str(per) + "% Completed\n Trivia Badge: " +
                          str(quest) + "/1, Skill Badge: " + str(skillbg) + "/15, Game Badge"+ str(game) + "/2")
             if (quest >= 20 and skillbg >= 10 and game>=2):
                 st.write(
@@ -201,7 +201,7 @@ if (sidebarContent == "Progress Report"):
 
             # Milestone3
             quest, skillbg,game, per = milestoneCal(2, 21,4, tindex)
-            st.subheader("Milestone 3:    " + str(per) + "% Completed\n Quests: " +
+            st.subheader("Milestone 3:    " + str(per) + "% Completed\n Trivia Badge: " +
                          str(quest) + "/2, Skill Badge: " + str(skillbg) + "/21, Game Badge"+ str(game) + "/4")
             if (quest == 30 and skillbg == 15 and game>=4):
                 st.write(
@@ -211,7 +211,7 @@ if (sidebarContent == "Progress Report"):
 
             # Ultimate Milestone
             quest, skillbg,game, per = milestoneCal(2, 30,4, tindex)
-            st.subheader("Ultimate Milestone :    " + str(per) + "% Completed\n Quests: " +
+            st.subheader("Ultimate Milestone :    " + str(per) + "% Completed\n Trivia Badge: " +
                          str(quest) + "/2, Skill Badge: " + str(skillbg) + "/30, Game Badge"+ str(game) + "/4")
             if (quest >= 40 and skillbg >= 20 and game>=4):
                 st.write(
@@ -367,7 +367,7 @@ elif (sidebarContent == "Generate Badge"):
             level = findMilestoneLevel(tindex)
 
             if level == 0:
-                st.warning("Achieve Your First Milestone  to Get your Badge")
+                st.warning("Achieve Your First Milestone to Get your Badge")
                 st.image('images/milestone0.png', use_column_width=True)
             else:
                 st.success(f"You're Currently on Milestone {level}")
@@ -420,7 +420,7 @@ else:
             "<h2><b>Google Cloud Arcade Facilitator Program Resources</b></h2>", unsafe_allow_html=True)
         st.markdown("<hr>", unsafe_allow_html=True)
 
-        st.subheader("**Program Deadline: Coming soon**")
+        st.subheader("**Program Deadline:  5th September 2023 11:59 PM**")
 
         st.subheader("**Important Links**")
         st.write("🌐 [GOOGLE CLOUD ARCADE Facilitator '23 Program Site](https://rsvp.withgoogle.com/events/arcade-facilitator/points-system)")
