@@ -226,7 +226,7 @@ if (sidebarContent == "Progress Report"):
         st.write("####")
 
 # Milestone Leaderboard Page
-elif (sidebarContent == "Milestone Leaderboard"):
+# elif (sidebarContent == "Milestone Leaderboard"):
     with(header):
         st.image('images/banner.jpg', use_column_width=True)
         st.markdown(
