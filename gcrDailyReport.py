@@ -49,7 +49,7 @@ def milestoneCal(quest, skillbg, game, tindex):
     if (int(df["Game Count"][tindex]) >= game):
         rgame = game
     per = int(((rquest + rskillbg+rgame) / (quest+skillbg+game)) * 100)
-    return rquest, rskillbg, per,rgame
+    return rquest, rskillbg, rgame, per
 
 
 def findMilestoneLevel(tindex):
@@ -174,15 +174,15 @@ if (sidebarContent == "Progress Report"):
 
             quest, skillbg,game, per = milestoneCal(1,9, 2, tindex)
             st.subheader("You have completed " + str(quest) +
-                         " Trivia Quests and " + str(skillbg) + " Skill Badges" + str(game) + " Game Badge.")
+                         " Trivia Badge and " + str(skillbg) + " Skill Badges" + str(game) + " Game Badge.")
             if(quest >= 1 and skillbg >= 9 and game>=2):
                 st.balloons()
 
             # Milestone1
             quest, skillbg, game, per = milestoneCal(1,9, 2, tindex)
             #per = int(((quest+skillbg)/12)*100)
-            st.subheader("Milestone 1:    " + str(per) + "% Completed\n Quests: " +
-                         str(quest) + "/1, Skill Badge: " + str(skillbg) + "/9" + str(game) + "/2")
+            st.subheader("Milestone 1:    " + str(per) + "% Completed\n Trivia Badge: " +
+                         str(quest) + "/1, Skill Badge: " + str(skillbg) + "/9, Game Badge" + str(game) + "/2")
             if(quest >= 1 and skillbg >= 9 and game>=2):
                 st.write(
                     "🥳 Congratulations! You have completed your 1st Milestone 🎊🎊🎊")
@@ -192,7 +192,7 @@ if (sidebarContent == "Progress Report"):
             # Milestone2
             quest, skillbg,game, per = milestoneCal(1,15, 2, tindex)
             st.subheader("Milestone 2:    " + str(per) + "% Completed\n Quests: " +
-                         str(quest) + "/1, Skill Badge: " + str(skillbg) + "/15"+ str(game) + "/2")
+                         str(quest) + "/1, Skill Badge: " + str(skillbg) + "/15, Game Badge"+ str(game) + "/2")
             if (quest >= 20 and skillbg >= 10 and game>=2):
                 st.write(
                     "🥳 Congratulations! You have completed your 2nd Milestone 🎊🎊🎊")
@@ -202,7 +202,7 @@ if (sidebarContent == "Progress Report"):
             # Milestone3
             quest, skillbg,game, per = milestoneCal(2, 21,4, tindex)
             st.subheader("Milestone 3:    " + str(per) + "% Completed\n Quests: " +
-                         str(quest) + "/2, Skill Badge: " + str(skillbg) + "/21"+ str(game) + "/4")
+                         str(quest) + "/2, Skill Badge: " + str(skillbg) + "/21, Game Badge"+ str(game) + "/4")
             if (quest == 30 and skillbg == 15 and game>=4):
                 st.write(
                     "🥳 Congratulations! You have completed your 3rd Milestone 🎊🎊🎊")
@@ -212,7 +212,7 @@ if (sidebarContent == "Progress Report"):
             # Ultimate Milestone
             quest, skillbg,game, per = milestoneCal(2, 30,4, tindex)
             st.subheader("Ultimate Milestone :    " + str(per) + "% Completed\n Quests: " +
-                         str(quest) + "/2, Skill Badge: " + str(skillbg) + "/30"+ str(game) + "/4")
+                         str(quest) + "/2, Skill Badge: " + str(skillbg) + "/30, Game Badge"+ str(game) + "/4")
             if (quest >= 40 and skillbg >= 20 and game>=4):
                 st.write(
                     "🥳 Congratulations! You have completed you Ultimate Milestone 🎊🎊🎊")
@@ -231,7 +231,7 @@ elif (sidebarContent == "Milestone Leaderboard"):
         st.image('images/banner.jpg', use_column_width=True)
         st.markdown(
             "<h1><b>Milestone Leaderboard 🏃‍♂️<br> BITW</b></h1>", unsafe_allow_html=True)
-        st.write("Last Updated On: " + date + "-2022")
+        st.write("Last Updated On: " + date + "-2023")
         st.write("#####")
 
     with(login):
@@ -345,7 +345,7 @@ elif (sidebarContent == "Milestone Leaderboard"):
             st.write("######")
 
     elif (textInput != "" and status == False):
-        st.error("Sorry, we won't be able to show you the Milestone Achievers unless and until you are a Participant under GCRF Program SVKM's NMIMS MPSTME")
+        st.error("Sorry, we won't be able to show you the Milestone Achievers unless and until you are a Participant under Google Cloud Arcade Program Under Facilator code AF23-3E5-GAR")
 
 elif (sidebarContent == "Generate Badge"):
     with(header):
@@ -425,5 +425,5 @@ else:
         st.subheader("**Important Links**")
         st.write("🌐 [GOOGLE CLOUD ARCADE Facilitator '23 Program Site](https://rsvp.withgoogle.com/events/arcade-facilitator/points-system)")
 
-        # st.subheader("**Prizes**")
-        # st.image('images/prizes.png', use_column_width=True)
+        st.subheader("**Prizes**")
+        st.image('images/prizes.jpeg', use_column_width=True)
