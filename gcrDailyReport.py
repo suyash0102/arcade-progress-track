@@ -144,7 +144,7 @@ if (sidebarContent == "Progress Report"):
         st.image('images/banner.jpg', use_column_width=True)
         st.markdown(
             "<h1 style='text-align: center'><b>Daily Progress Report 🌩 <br> BITW</b></h1>", unsafe_allow_html=True)
-        st.write("Last Updated On: " + date + "-2022")
+        st.write("Last Updated On: " + date + "-2023")
         st.write("#####")
 
     with(login):
@@ -160,8 +160,8 @@ if (sidebarContent == "Progress Report"):
             tindex = df[df["Email ID"] == textInput].index[0]
             st.title("Welcome " + str(df["Full Name"][tindex]) + " !")
 
-            st.write("**Enrollment Status:** " +
-                     str(df["Enrolment Status"][tindex]))
+            st.write("**Application Status:** " +
+                     str(df["Application Status"][tindex]))
             st.write("**EmailID:** " + str(df["Email ID"][tindex]))
             st.write("[View Google Cloud Skills Boost Profile URL](" +
                      str(df["Public Profile URL"][tindex]) + ")")
