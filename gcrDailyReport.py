@@ -16,8 +16,8 @@ owners = st.container()
 data = pd.read_csv("data/data.csv")
 df = pd.DataFrame(data)
 
-for i in range(len(df["Student Email"])):
-    df['Student Email'][i] = df['Student Email'][i].lower()
+for i in range(len(df["Email ID"])):
+    df['Email ID'][i] = df['Email ID'][i].lower()
 
 
 #WebApp -- "Milestone Leaderboard"
@@ -39,10 +39,10 @@ st.markdown("""
 
 def milestoneCal(quest, skillbg, tindex):
     rquest = int(df["# of Quests Completed"][tindex])
-    rskillbg = int(df["# of Skill Badges Completed"][tindex])
+    rskillbg = int(df["Skill Badge Count"][tindex])
     if (int(df["# of Quests Completed"][tindex]) >= quest):
         rquest = quest
-    if (int(df["# of Skill Badges Completed"][tindex]) >= skillbg):
+    if (int(df["Skill Badge Count"][tindex]) >= skillbg):
         rskillbg = skillbg
     per = int(((rquest + rskillbg) / (quest+skillbg)) * 100)
     return rquest, rskillbg, per
@@ -51,7 +51,7 @@ def milestoneCal(quest, skillbg, tindex):
 def findMilestoneLevel(tindex):
     level = 0
     cquest = int(df["# of Quests Completed"][tindex])
-    cskillbg = int(df["# of Skill Badges Completed"][tindex])
+    cskillbg = int(df["Skill Badge Count"][tindex])
 
     if (cquest >= 10 and cskillbg >= 5):
         level = 1
@@ -77,7 +77,7 @@ def showStats():
 
     for i in range(len(df)):
         qCount = int(df["# of Quests Completed"][i])
-        sCount = int(df["# of Skill Badges Completed"][i])
+        sCount = int(df["Skill Badge Count"][i])
 
         level = 0
 
@@ -124,7 +124,7 @@ def prizeWinners(limit):
     finalList = []
     for i in range(len(df)):
         if(df["level"][i] == limit):
-            arr = str(df["Student Name"][i]).split()
+            arr = str(df["Full Name"][i]).split()
             fname = arr[0]
             lname = arr[-1]
             name = fname + " " + lname[0] + "."
@@ -146,20 +146,20 @@ if (sidebarContent == "Progress Report"):
 
         # Input Activity
         status = False
-        for i in df["Student Email"]:
+        for i in df["Email ID"]:
             if(i == textInput):
                 status = True
         if(textInput != "" and status):
             # Finding the index of the search emailID
-            tindex = df[df["Student Email"] == textInput].index[0]
-            st.title("Welcome " + str(df["Student Name"][tindex]) + " !")
+            tindex = df[df["Email ID"] == textInput].index[0]
+            st.title("Welcome " + str(df["Full Name"][tindex]) + " !")
 
             st.write("**Enrollment Status:** " +
                      str(df["Enrolment Status"][tindex]))
-            st.write("**EmailID:** " + str(df["Student Email"][tindex]))
+            st.write("**EmailID:** " + str(df["Email ID"][tindex]))
             st.write("[View Google Cloud Skills Boost Profile URL](" +
-                     str(df["Google Cloud Skills Boost Profile URL"][tindex]) + ")")
-            st.write("**Institution:** " + str(df["Institution"][tindex]))
+                     str(df["Public Profile URL"][tindex]) + ")")
+            # st.write("**Institution:** " + str(df["Institution"][tindex]))
 
             st.markdown("<hr>", unsafe_allow_html=True)
 
