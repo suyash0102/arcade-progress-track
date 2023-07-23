@@ -172,7 +172,7 @@ if (sidebarContent == "Progress Report"):
             st.markdown('<b class="big-font">Milestone Status</b>',
                         unsafe_allow_html=True)
 
-            quest, skillbg, per = milestoneCal(40, 40, tindex)
+            quest, skillbg,game, per = milestoneCal(40, 40, tindex)
             st.subheader("You have completed " + str(quest) +
                          " Quests and " + str(skillbg) + " Skill Badges.")
             if(quest >= 10 and skillbg >= 5):
