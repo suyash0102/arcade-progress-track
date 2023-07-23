@@ -4,7 +4,7 @@ import pandas as pd
 import plotly.graph_objects as go
 
 # Variable Names
-date = "07-07"
+date = "23-07"
 
 # Program Variables
 header = st.container()
@@ -37,29 +37,34 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-def milestoneCal(quest, skillbg, tindex):
-    rquest = int(df["# of Quests Completed"][tindex])
+def milestoneCal(quest, skillbg,game, tindex):
+    rquest = int(df["Trivia Quest Count"][tindex])
     rskillbg = int(df["Skill Badge Count"][tindex])
-    if (int(df["# of Quests Completed"][tindex]) >= quest):
+    rgame = int(df["Game Count"][tindex])
+
+    if (int(df["Trivia Quest Count"][tindex]) >= quest):
         rquest = quest
     if (int(df["Skill Badge Count"][tindex]) >= skillbg):
         rskillbg = skillbg
-    per = int(((rquest + rskillbg) / (quest+skillbg)) * 100)
-    return rquest, rskillbg, per
+    if (int(df["Game Count"][tindex]) >= rgame):
+        rgame = game
+    per = int(((rquest + rskillbg+rgame) / (quest+skillbg+game)) * 100)
+    return rquest, rskillbg, per,rgame
 
 
 def findMilestoneLevel(tindex):
     level = 0
-    cquest = int(df["# of Quests Completed"][tindex])
+    cquest = int(df["Trivia Quest Count"][tindex])
     cskillbg = int(df["Skill Badge Count"][tindex])
+    cgame = int(df["Game Count"][tindex])
 
-    if (cquest >= 10 and cskillbg >= 5):
+    if (cquest == 1 and cskillbg >= 9 and cgame>=2):
         level = 1
-    if (cquest >= 20 and cskillbg >= 10):
+    if (cquest == 1 and cskillbg >= 15 and cgame>=2):
         level = 2
-    if (cquest >= 30 and cskillbg >= 15):
+    if (cquest == 2 and cskillbg >= 21 and cgame>=4):
         level = 3
-    if (cquest >= 40 and cskillbg >= 20):
+    if (cquest == 2 and cskillbg >= 30 and cgame>=4):
         level = 4
 
     return level
@@ -76,15 +81,16 @@ def showStats():
     totalSkillBadges = 0
 
     for i in range(len(df)):
-        qCount = int(df["# of Quests Completed"][i])
+        qCount = int(df["Trivia Quest Count"][i])
         sCount = int(df["Skill Badge Count"][i])
+        gCount = int(df["Game Count"][i])
 
         level = 0
 
-        if (qCount == 0 and sCount == 0):
+        if (qCount == 0 and sCount == 0 and gCount==0):
             inactive += 1
 
-        if (qCount < 10 or sCount < 5):
+        if (qCount < 1 or sCount < 9 or gCount<2):
             if qCount == 0:
                 if sCount >= 1:
                     m0Count += 1
@@ -96,13 +102,13 @@ def showStats():
             if (qCount > 0 and sCount > 0):
                 m0Count += 1
 
-        if (qCount >= 10 and sCount >= 5):
+        if (qCount >= 1 and sCount >= 9 and gCount>=2):
             level = 1
-        if (qCount >= 20 and sCount >= 10):
+        if (qCount >= 1 and sCount >= 15 and gCount>=2):
             level = 2
-        if (qCount >= 30 and sCount >= 15):
+        if (qCount >= 2 and sCount >= 21 and gCount>=4):
             level = 3
-        if (qCount >= 40 and sCount >= 20):
+        if (qCount >= 2 and sCount >= 30 and gCount>=4):
             level = 4
 
         if level == 1:
@@ -173,41 +179,41 @@ if (sidebarContent == "Progress Report"):
                 st.balloons()
 
             # Milestone1
-            quest, skillbg, per = milestoneCal(10, 5, tindex)
+            quest, skillbg, game, per = milestoneCal(1,9, 2, tindex)
             #per = int(((quest+skillbg)/12)*100)
             st.subheader("Milestone 1:    " + str(per) + "% Completed\n Quests: " +
-                         str(quest) + "/10, Skill Badge: " + str(skillbg) + "/5")
-            if(quest >= 10 and skillbg >= 5):
+                         str(quest) + "/1, Skill Badge: " + str(skillbg) + "/9" + str(game) + "/2")
+            if(quest >= 1 and skillbg >= 9 and game>=2):
                 st.write(
                     "🥳 Congratulations! You have completed your 1st Milestone 🎊🎊🎊")
             else:
                 st.progress(per)
 
             # Milestone2
-            quest, skillbg, per = milestoneCal(20, 10, tindex)
+            quest, skillbg,game, per = milestoneCal(1,15, 2, tindex)
             st.subheader("Milestone 2:    " + str(per) + "% Completed\n Quests: " +
-                         str(quest) + "/20, Skill Badge: " + str(skillbg) + "/10")
-            if (quest >= 20 and skillbg >= 10):
+                         str(quest) + "/1, Skill Badge: " + str(skillbg) + "/15"+ str(game) + "/2")
+            if (quest >= 20 and skillbg >= 10 and game>=2):
                 st.write(
                     "🥳 Congratulations! You have completed your 2nd Milestone 🎊🎊🎊")
             else:
                 st.progress(per)
 
             # Milestone3
-            quest, skillbg, per = milestoneCal(30, 15, tindex)
+            quest, skillbg,game, per = milestoneCal(2, 21,4, tindex)
             st.subheader("Milestone 3:    " + str(per) + "% Completed\n Quests: " +
-                         str(quest) + "/30, Skill Badge: " + str(skillbg) + "/15")
-            if (quest == 30 and skillbg == 15):
+                         str(quest) + "/2, Skill Badge: " + str(skillbg) + "/21"+ str(game) + "/4")
+            if (quest == 30 and skillbg == 15 and game>=4):
                 st.write(
                     "🥳 Congratulations! You have completed your 3rd Milestone 🎊🎊🎊")
             else:
                 st.progress(per)
 
             # Ultimate Milestone
-            quest, skillbg, per = milestoneCal(40, 20, tindex)
+            quest, skillbg,game, per = milestoneCal(2, 30,4, tindex)
             st.subheader("Ultimate Milestone :    " + str(per) + "% Completed\n Quests: " +
-                         str(quest) + "/40, Skill Badge: " + str(skillbg) + "/20")
-            if (quest >= 40 and skillbg >= 20):
+                         str(quest) + "/2, Skill Badge: " + str(skillbg) + "/30"+ str(game) + "/4")
+            if (quest >= 40 and skillbg >= 20 and game>=4):
                 st.write(
                     "🥳 Congratulations! You have completed you Ultimate Milestone 🎊🎊🎊")
             else:
@@ -259,7 +265,7 @@ elif (sidebarContent == "Milestone Leaderboard"):
         st.write("**Inactive Students:** " + str(inactiveCount))
         st.plotly_chart(fig)
 
-    for i in df["Student Email"]:
+    for i in df["Email ID"]:
         if(i == textInput):
             status = True
     if(textInput != "" and status):
@@ -271,8 +277,8 @@ elif (sidebarContent == "Milestone Leaderboard"):
 
         df["level"] = 0
         for i in range(len(df)):
-            quests = df["# of Quests Completed"][i]
-            badges = df["# of Skill Badges Completed"][i]
+            quests = df["Trivia Quest Count"][i]
+            badges = df["Skill Badge Count"][i]
             level = 0
             if (quests >= 10 and badges >= 5):
                 level = 1
