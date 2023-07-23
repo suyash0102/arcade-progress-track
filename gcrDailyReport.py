@@ -227,125 +227,125 @@ if (sidebarContent == "Progress Report"):
 
 # Milestone Leaderboard Page
 # elif (sidebarContent == "Milestone Leaderboard"):
-    with(header):
-        st.image('images/banner.jpg', use_column_width=True)
-        st.markdown(
-            "<h1><b>Milestone Leaderboard 🏃‍♂️<br> BITW</b></h1>", unsafe_allow_html=True)
-        st.write("Last Updated On: " + date + "-2023")
-        st.write("#####")
+    # with(header):
+    #     st.image('images/banner.jpg', use_column_width=True)
+    #     st.markdown(
+    #         "<h1><b>Milestone Leaderboard 🏃‍♂️<br> BITW</b></h1>", unsafe_allow_html=True)
+    #     st.write("Last Updated On: " + date + "-2023")
+    #     st.write("#####")
 
-    with(login):
-        textInput = st.text_input("Enter your Email ID", key="email_input").lower()
-        st.write("####")
+    # with(login):
+    #     textInput = st.text_input("Enter your Email ID", key="email_input").lower()
+    #     st.write("####")
 
-    status = False
+    # status = False
 
-    if textInput == "admins@gcr.com":
-        ml0, ml1, ml2, ml3, ml4, questTotal, skillbgTotal, inactiveCount = showStats()
+    # if textInput == "admins@gcr.com":
+    #     ml0, ml1, ml2, ml3, ml4, questTotal, skillbgTotal, inactiveCount = showStats()
 
-        labels = ['Milestone0', 'Milestone1', 'Milestone2',
-                  'Milestone3', 'Milestone4', 'Inactive']
-        values = [ml0, ml1, ml2, ml3, ml4, inactiveCount]
-        colors = ['cyan', 'blue', 'green', 'orange', 'gold', 'red']
+    #     labels = ['Milestone0', 'Milestone1', 'Milestone2',
+    #               'Milestone3', 'Milestone4', 'Inactive']
+    #     values = [ml0, ml1, ml2, ml3, ml4, inactiveCount]
+    #     colors = ['cyan', 'blue', 'green', 'orange', 'gold', 'red']
 
-        fig = go.Figure(data=[go.Pie(labels=labels, values=values)])
-        fig.update_traces(hoverinfo='label+percent', textinfo='value',
-                          marker=dict(colors=colors, line=dict(color='#000000', width=1)))
-        st.write("## **📊 Facilitator Stats**")
-        st.write("####")
-        st.write("**No. of Quest completions:** " + str(questTotal))
-        st.write("**No. of Skill Badge completions:** " + str(skillbgTotal))
-        st.write("**Total Count:** " + str(questTotal + skillbgTotal))
-        st.write("**Milestone 1 Achievers:** " + str(ml1))
-        st.write("**Milestone 2 Achievers:** " + str(ml2))
-        st.write("**Milestone 3 Achievers:** " + str(ml3))
-        st.write("**Milestone 4 Achievers:** " + str(ml4))
-        st.write("**Total Achievers:** " + str(ml1 + ml2 + ml3 + ml4))
-        st.write("**Milestone 1 In Progress:** " + str(ml0))
-        st.write("**Inactive Students:** " + str(inactiveCount))
-        st.plotly_chart(fig)
+    #     fig = go.Figure(data=[go.Pie(labels=labels, values=values)])
+    #     fig.update_traces(hoverinfo='label+percent', textinfo='value',
+    #                       marker=dict(colors=colors, line=dict(color='#000000', width=1)))
+    #     st.write("## **📊 Facilitator Stats**")
+    #     st.write("####")
+    #     st.write("**No. of Quest completions:** " + str(questTotal))
+    #     st.write("**No. of Skill Badge completions:** " + str(skillbgTotal))
+    #     st.write("**Total Count:** " + str(questTotal + skillbgTotal))
+    #     st.write("**Milestone 1 Achievers:** " + str(ml1))
+    #     st.write("**Milestone 2 Achievers:** " + str(ml2))
+    #     st.write("**Milestone 3 Achievers:** " + str(ml3))
+    #     st.write("**Milestone 4 Achievers:** " + str(ml4))
+    #     st.write("**Total Achievers:** " + str(ml1 + ml2 + ml3 + ml4))
+    #     st.write("**Milestone 1 In Progress:** " + str(ml0))
+    #     st.write("**Inactive Students:** " + str(inactiveCount))
+    #     st.plotly_chart(fig)
 
-    for i in df["Email ID"]:
-        if(i == textInput):
-            status = True
-    if(textInput != "" and status):
-        m4 = st.container()
-        m3 = st.container()
-        m2 = st.container()
-        m1 = st.container()
-        cred = st.container()
+    # for i in df["Email ID"]:
+    #     if(i == textInput):
+    #         status = True
+    # if(textInput != "" and status):
+    #     m4 = st.container()
+    #     m3 = st.container()
+    #     m2 = st.container()
+    #     m1 = st.container()
+    #     cred = st.container()
 
-        df["level"] = 0
-        for i in range(len(df)):
-            quests = df[" Trivia Quest Count"][i]
-            badges = df["Skill Badge Count"][i]
-            game = df["Game Count"][i]
-            level = 0
-            if (quests >= 1 and badges >= 9 and game>=2):
-                level = 1
-            if (quests >= 1 and badges >= 15 and game>=2):
-                level = 2
-            if (quests >= 2 and badges >= 21 and game>=4):
-                level = 3
-            if (quests >= 2 and badges >= 30 and game>=4):
-                level = 4
-            df["level"][i] = level
+    #     df["level"] = 0
+    #     for i in range(len(df)):
+    #         quests = df[" Trivia Quest Count"][i]
+    #         badges = df["Skill Badge Count"][i]
+    #         game = df["Game Count"][i]
+    #         level = 0
+    #         if (quests >= 1 and badges >= 9 and game>=2):
+    #             level = 1
+    #         if (quests >= 1 and badges >= 15 and game>=2):
+    #             level = 2
+    #         if (quests >= 2 and badges >= 21 and game>=4):
+    #             level = 3
+    #         if (quests >= 2 and badges >= 30 and game>=4):
+    #             level = 4
+    #         df["level"][i] = level
 
-        with(m4):
-            flist = prizeWinners(4)
-            # st.subheader(m1_names)
-            if (len(flist) != 0):
-                st.markdown(
-                    '<b class="big-font">🏆 Ultimate Milestone : Winners</b>', unsafe_allow_html=True)
-                st.write("######")
-                for i in flist:
-                    st.write("🔸  " + str(i))
-                st.markdown("<hr>", unsafe_allow_html=True)
+    #     with(m4):
+    #         flist = prizeWinners(4)
+    #         # st.subheader(m1_names)
+    #         if (len(flist) != 0):
+    #             st.markdown(
+    #                 '<b class="big-font">🏆 Ultimate Milestone : Winners</b>', unsafe_allow_html=True)
+    #             st.write("######")
+    #             for i in flist:
+    #                 st.write("🔸  " + str(i))
+    #             st.markdown("<hr>", unsafe_allow_html=True)
 
-        with(m3):
-            flist = prizeWinners(3)
-            # st.subheader(m1_names)
-            if (len(flist) != 0):
-                st.markdown(
-                    '<b class="big-font">🏆 Milestone 3 : Winners</b>', unsafe_allow_html=True)
-                st.write("######")
-                #st.markdown("<h2> --------* Milestone 3 : Winners *-------- </h2>", unsafe_allow_html=True)
-                for i in flist:
-                    st.write("🔸  " + str(i))
-                st.markdown("<hr>", unsafe_allow_html=True)
+    #     with(m3):
+    #         flist = prizeWinners(3)
+    #         # st.subheader(m1_names)
+    #         if (len(flist) != 0):
+    #             st.markdown(
+    #                 '<b class="big-font">🏆 Milestone 3 : Winners</b>', unsafe_allow_html=True)
+    #             st.write("######")
+    #             #st.markdown("<h2> --------* Milestone 3 : Winners *-------- </h2>", unsafe_allow_html=True)
+    #             for i in flist:
+    #                 st.write("🔸  " + str(i))
+    #             st.markdown("<hr>", unsafe_allow_html=True)
 
-        with(m2):
-            flist = prizeWinners(2)
-            if (len(flist) != 0):
-                st.markdown(
-                    '<b class="big-font">🏆 Milestone 2 : Winners</b>', unsafe_allow_html=True)
-                st.write("######")
-                #st.markdown("<h2> --------* Milestone 2 : Winners *-------- </h2>", unsafe_allow_html=True)
-                for i in flist:
-                    st.write("🔸  " + str(i))
+    #     with(m2):
+    #         flist = prizeWinners(2)
+    #         if (len(flist) != 0):
+    #             st.markdown(
+    #                 '<b class="big-font">🏆 Milestone 2 : Winners</b>', unsafe_allow_html=True)
+    #             st.write("######")
+    #             #st.markdown("<h2> --------* Milestone 2 : Winners *-------- </h2>", unsafe_allow_html=True)
+    #             for i in flist:
+    #                 st.write("🔸  " + str(i))
 
-                st.markdown("<hr>", unsafe_allow_html=True)
+    #             st.markdown("<hr>", unsafe_allow_html=True)
 
-        with(m1):
-            flist = prizeWinners(1)
-            # st.subheader(m1_names)
-            if (len(flist) != 0):
-                st.markdown(
-                    '<b class="big-font">🏆 Milestone 1 : Winners</b>', unsafe_allow_html=True)
-                st.write("######")
-                #st.markdown("<h2> --------* Milestone 1 : Winners *-------- </h2>", unsafe_allow_html=True)
+    #     with(m1):
+    #         flist = prizeWinners(1)
+    #         # st.subheader(m1_names)
+    #         if (len(flist) != 0):
+    #             st.markdown(
+    #                 '<b class="big-font">🏆 Milestone 1 : Winners</b>', unsafe_allow_html=True)
+    #             st.write("######")
+    #             #st.markdown("<h2> --------* Milestone 1 : Winners *-------- </h2>", unsafe_allow_html=True)
 
-                for i in flist:
-                    st.write("🔸  " + str(i))
+    #             for i in flist:
+    #                 st.write("🔸  " + str(i))
 
-                st.markdown("<hr>", unsafe_allow_html=True)
-                st.write("#####")
+    #             st.markdown("<hr>", unsafe_allow_html=True)
+    #             st.write("#####")
 
-        with(cred):
-            st.write("######")
+    #     with(cred):
+    #         st.write("######")
 
-    elif (textInput != "" and status == False):
-        st.error("Sorry, we won't be able to show you the Milestone Achievers unless and until you are a Participant under Google Cloud Arcade Program Under Facilator code AF23-3E5-GAR")
+    # elif (textInput != "" and status == False):
+    #     st.error("Sorry, we won't be able to show you the Milestone Achievers unless and until you are a Participant under Google Cloud Arcade Program Under Facilator code AF23-3E5-GAR")
 
 elif (sidebarContent == "Generate Badge"):
     with(header):
