@@ -235,7 +235,7 @@ if (sidebarContent == "Progress Report"):
         st.write("#####")
 
     with(login):
-        textInput = st.text_input("Enter your Email ID").lower()
+        textInput = st.text_input("Enter your Email ID", key="email_input").lower()
         st.write("####")
 
     status = False
@@ -410,7 +410,7 @@ elif (sidebarContent == "Generate Badge"):
         * If you upload a landscape or out of shape image, it would be resized to 1:1
         * According to your Milestone, your picture will be automatically applied with a badge
         * Right click on the Image and select save image as to Download the file
-        * Then do share on your social media handles by tagging us as your Facilitator [Suyash Dahake](https://www.linkedin.com/in/suyash-dahake/) [Tushar H] and Google Cloud India, also use `#GoogleCloudReady` tag. Google Cloud team closely monitor this tag :smile: :tada:
+        * Then do share on your social media handles by tagging us as your Facilitator [Suyash Dahake](https://www.linkedin.com/in/suyash-dahake/) [Tushar Hiwarkar](https://www.linkedin.com/in/tushar-hiwarkar-b1980b229/) and Google Cloud India, also use `#GoogleCloudReady` `#GDSCBITW` tag. Google Cloud team closely monitor this tag :smile: :tada:
         """)
 
 else:
