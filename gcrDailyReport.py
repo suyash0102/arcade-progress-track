@@ -37,12 +37,12 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-def milestoneCal(quest, skillbg,game, tindex):
-    rquest = int(df["Trivia Quest Count"][tindex])
+def milestoneCal(quest, skillbg, game, tindex):
+    rquest = int(df[" Trivia Quest Count"][tindex])
     rskillbg = int(df["Skill Badge Count"][tindex])
     rgame = int(df["Game Count"][tindex])
 
-    if (int(df["Trivia Quest Count"][tindex]) >= quest):
+    if (int(df[" Trivia Quest Count"][tindex]) >= quest):
         rquest = quest
     if (int(df["Skill Badge Count"][tindex]) >= skillbg):
         rskillbg = skillbg
@@ -54,7 +54,7 @@ def milestoneCal(quest, skillbg,game, tindex):
 
 def findMilestoneLevel(tindex):
     level = 0
-    cquest = int(df["Trivia Quest Count"][tindex])
+    cquest = int(df[" Trivia Quest Count"][tindex])
     cskillbg = int(df["Skill Badge Count"][tindex])
     cgame = int(df["Game Count"][tindex])
 
@@ -81,7 +81,7 @@ def showStats():
     totalSkillBadges = 0
 
     for i in range(len(df)):
-        qCount = int(df["Trivia Quest Count"][i])
+        qCount = int(df[" Trivia Quest Count"][i])
         sCount = int(df["Skill Badge Count"][i])
         gCount = int(df["Game Count"][i])
 
@@ -277,7 +277,7 @@ elif (sidebarContent == "Milestone Leaderboard"):
 
         df["level"] = 0
         for i in range(len(df)):
-            quests = df["Trivia Quest Count"][i]
+            quests = df[" Trivia Quest Count"][i]
             badges = df["Skill Badge Count"][i]
             game = df["Game Count"][i]
             level = 0
@@ -359,11 +359,11 @@ elif (sidebarContent == "Generate Badge"):
 
         # Input Activity
         status = False
-        for i in df["Student Email"]:
+        for i in df["Email ID"]:
             if(i == textInput):
                 status = True
         if(textInput != "" and status):
-            tindex = df[df["Student Email"] == textInput].index[0]
+            tindex = df[df["Email ID"] == textInput].index[0]
             level = findMilestoneLevel(tindex)
 
             if level == 0:
